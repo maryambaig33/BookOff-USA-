@@ -1,0 +1,7 @@
+{
+  "name": "BookOff USA Enhanced",
+  "description": "A modern, AI-powered store locator and shopping companion for BookOff USA, featuring smart location search and inventory insights.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
