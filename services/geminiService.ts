@@ -32,15 +32,31 @@ export const findStoresWithAI = async (
     };
   }
 
+  const now = new Date();
+  const dateTimeStr = now.toLocaleString('en-US', { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric', 
+    hour: 'numeric', 
+    minute: 'numeric',
+    timeZoneName: 'short'
+  });
+
   // Instruct Gemini to focus on BookOff specifically or similar stores if not found
   const prompt = `
     User Query: "${query}"
     
+    Current Date & Time: ${dateTimeStr}
+    
     Context: You are the "BookOff Finder AI". Your goal is to help users find BookOff locations in the USA.
     If the user asks for a store, use Google Maps to find the nearest BookOff location.
-    Provide the address, hours, and a friendly reason why they should visit.
-    If no specific BookOff is nearby, suggest the closest relevant alternatives or general advice.
-    Be concise and helpful.
+    
+    Guidelines:
+    1. If asking about open/closed status, check the operating hours against the Current Date & Time provided above.
+    2. Provide the address, hours, and a friendly reason why they should visit.
+    3. If no specific BookOff is nearby, suggest the closest relevant alternatives or general advice.
+    4. Be concise, friendly, and enthusiastic about BookOff (books, games, anime).
   `;
 
   try {
