@@ -90,13 +90,13 @@ const App: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <div className="bg-[#003399] text-white pb-12 pt-8 px-4 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFCC00] rounded-full mix-blend-multiply filter blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2"></div>
+      <div className="bg-[#003399] text-white pb-32 pt-10 px-4 relative overflow-hidden transition-all duration-500">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFCC00] rounded-full mix-blend-multiply filter blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-400 rounded-full mix-blend-overlay filter blur-3xl opacity-20 transform -translate-x-1/2 translate-y-1/2"></div>
         
         <div className="max-w-7xl mx-auto relative z-10 text-center md:text-left md:flex md:items-end md:justify-between">
-          <div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
+          <div className="max-w-3xl">
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
               {currentView === AppView.BROWSE ? (
                 <>
                   Find Your Treasure at <span className="text-[#FFCC00]">BOOKOFF</span>
@@ -107,14 +107,14 @@ const App: React.FC = () => {
                 </>
               )}
             </h2>
-            <p className="text-blue-100 text-lg max-w-2xl leading-relaxed">
+            <p className="text-blue-100 text-lg md:text-xl max-w-2xl leading-relaxed">
               {currentView === AppView.BROWSE 
                 ? 'Discover pre-loved books, anime, games, and electronics at a store near you. Sustainable shopping starts here.' 
                 : 'Looking for a specific location, open hours, or just want to know where to sell your old games? Let our AI help you out.'}
             </p>
           </div>
           {currentView === AppView.BROWSE && (
-            <div className="hidden md:block">
+            <div className="hidden md:block pb-2">
                <button onClick={() => setCurrentView(AppView.AI_FINDER)} className="group flex items-center gap-2 text-[#FFCC00] font-bold hover:text-white transition-colors">
                  Can't find it? Ask AI <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                </button>
@@ -124,11 +124,11 @@ const App: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full -mt-8 relative z-20">
+      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full -mt-12 relative z-20 pb-12">
         {currentView === AppView.BROWSE ? (
           <StoreList />
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 pt-4">
             <div className="lg:col-span-2">
               <AIChat />
             </div>
@@ -169,7 +169,7 @@ const App: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#002266] text-blue-200 py-12 mt-12 border-t border-[#003399]">
+      <footer className="bg-[#002266] text-blue-200 py-12 mt-auto border-t border-[#003399]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
              <h4 className="text-[#FFCC00] font-extrabold text-xl mb-4">BOOKOFF USA</h4>

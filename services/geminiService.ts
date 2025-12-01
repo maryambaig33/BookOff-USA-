@@ -82,11 +82,13 @@ export const findStoresWithAI = async (
           });
         }
         if (chunk.maps) {
-           // Maps chunks might be formatted differently, extracting URI is key
-           // Usually chunk.maps.placeAnswerSources contains details
+           // Improved Maps extraction logic
+           const uri = chunk.maps.placeAnswerSources?.[0]?.uri || 
+                       `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("BookOff " + query)}`;
+           
            groundingLinks.push({
              title: chunk.maps.title || "View on Google Maps",
-             uri: chunk.maps.placeAnswerSources?.[0]?.uri || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(text.slice(0, 20))}`,
+             uri: uri,
              source: 'Google Maps'
            });
         }

@@ -70,7 +70,7 @@ const AIChat: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-[600px] bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden relative">
+    <div className="flex flex-col h-[550px] md:h-[600px] bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden relative">
       {/* Header */}
       <div className="bg-[#003399] p-4 flex items-center gap-3 z-10 sticky top-0 shadow-md">
         <div className="bg-white/10 p-2 rounded-lg text-[#FFCC00]">
@@ -123,29 +123,33 @@ const AIChat: React.FC = () => {
                 </div>
 
                 {msg.groundingLinks && msg.groundingLinks.length > 0 && (
-                  <div className="bg-white border border-slate-200 rounded-xl p-3 space-y-2 animate-fadeIn shadow-sm">
-                    <p className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+                  <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm animate-fadeIn mt-2">
+                    <div className="bg-slate-50 px-3 py-2 border-b border-slate-200 flex items-center gap-2">
                       <Sparkles className="w-3 h-3 text-[#FFCC00]" />
-                      Sources
-                    </p>
-                    {msg.groundingLinks.map((link, idx) => (
-                      <a 
-                        key={idx} 
-                        href={link.uri} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-2 bg-slate-50 rounded-lg border border-slate-100 hover:border-blue-300 hover:shadow-sm transition-all group"
-                      >
-                        <div className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center shrink-0 group-hover:border-blue-300 transition-colors">
-                          <MapPin className="w-4 h-4 text-[#003399]" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="text-sm font-semibold text-slate-800 truncate group-hover:text-[#003399]">{link.title}</div>
-                          <div className="text-xs text-slate-500">{link.source}</div>
-                        </div>
-                        <ExternalLink className="w-4 h-4 text-slate-300 group-hover:text-[#003399]" />
-                      </a>
-                    ))}
+                      <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Sources</span>
+                    </div>
+                    <div className="divide-y divide-slate-100">
+                      {msg.groundingLinks.map((link, idx) => (
+                        <a 
+                          key={idx} 
+                          href={link.uri} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-3 p-3 hover:bg-slate-50 transition-colors group"
+                        >
+                          <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center shrink-0 group-hover:bg-[#003399] transition-colors">
+                            <MapPin className="w-4 h-4 text-[#003399] group-hover:text-white" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-sm font-semibold text-slate-800 truncate group-hover:text-[#003399]">{link.title}</div>
+                            <div className="text-xs text-slate-500 flex items-center gap-1">
+                              {link.source}
+                              <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>

@@ -31,9 +31,9 @@ const StoreList: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 animate-fadeIn pb-12">
-      {/* Controls Container */}
-      <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg border border-slate-200 -mt-16 relative z-30">
+    <div className="space-y-8 animate-fadeIn">
+      {/* Controls Container - Floating Effect */}
+      <div className="bg-white p-4 md:p-6 rounded-xl shadow-lg border border-slate-200 -mt-8 relative z-30 mx-0 md:mx-2">
         <div className="flex flex-col gap-6">
           
           {/* Top Row: Search and Clear */}
@@ -51,7 +51,7 @@ const StoreList: React.FC = () => {
             {(selectedState !== 'All' || selectedFeature !== 'All' || searchTerm) && (
               <button 
                 onClick={clearFilters}
-                className="flex items-center justify-center gap-2 px-4 py-2 text-sm text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition-colors font-medium"
+                className="flex items-center justify-center gap-2 px-4 py-2 text-sm text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition-colors font-medium whitespace-nowrap"
               >
                 <X className="w-4 h-4" /> Clear Filters
               </button>
@@ -130,7 +130,7 @@ const StoreList: React.FC = () => {
       </div>
 
       {/* Grid */}
-      <div className="mt-8">
+      <div>
         <h3 className="text-lg font-bold text-slate-800 mb-4 px-1">
           Showing {filteredStores.length} Location{filteredStores.length !== 1 ? 's' : ''}
         </h3>
